@@ -252,7 +252,7 @@ class FLOPageViewController: NSViewController {
         }
     }
     
-    var overlayControls = false {
+    var overlayControls = true {
         didSet {
             self.updateBottomConstraint()
             self.updateSideConstraints()
@@ -379,7 +379,17 @@ extension FLOPageViewController {
     }
     
     var pageSize: NSSize {
-        return self.pageController.view.bounds.size
+        guard !self.overlayControls && (self.showPageControl || self.showArrowControls) else { return self.view.bounds.size }
+        
+        var size = self.view.bounds.size
+        if self.showPageControl {
+            size.height -= self.pageControl!.indicatorSize*3
+        }
+        if self.showArrowControls {
+            size.width -= ArrowSize.width*6
+        }
+        
+        return size
     }
     
 }

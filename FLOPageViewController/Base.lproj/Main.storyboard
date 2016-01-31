@@ -761,7 +761,7 @@
                             </textField>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="etv-lh-kSk">
                                 <rect key="frame" x="18" y="318" width="123" height="18"/>
-                                <buttonCell key="cell" type="check" title="Overlay Controls" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Vff-OE-NXp">
+                                <buttonCell key="cell" type="check" title="Overlay Controls" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Vff-OE-NXp">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>

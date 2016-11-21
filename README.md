@@ -1,5 +1,5 @@
 #FLOPageViewController
-`FLOPageViewController` is an easy to use page view controller for OS X, similar to `UIPageViewController` for iOS. It uses `NSPageController` under the hood, but is much simpler to use and provides customizable UI elements for navigation.
+`FLOPageViewController` is an easy to use page view controller for macOS, similar to `UIPageViewController` for iOS. It uses `NSPageController` under the hood, but is much simpler to use and provides customizable UI elements for navigation.
 
 ![](screenshot.png)
 
@@ -7,19 +7,19 @@
 `FLOPageViewController` is a subclass of `NSViewController` and NOT `NSPageController`. Thus, you can use a `FLOPageViewController` as your window's content view controller.
 
 Basically, you just need to pass an array of `NSViewController`s to your `FLOPageViewController` instance using the `viewControllers` property.
-If you're working with storyboards,  you might want to use the `loadViewControllersFromStoryboard(:identifiers:)` convenience method. It will load `NSViewController`s from an `NSStoryboard` using the given `identifiers` array.
+If you're working with storyboards,  you might want to use the `loadViewControllers(:from:)` convenience method. It will load `NSViewController`s from an `NSStoryboard` using the given `identifiers` array.
 
 ##Behavior + Appearance
 
 ####Page Control
-The `pageControl` is visible by default and supports two different styles, `.Dot` and `.Circle`. Set the `showPageControl` property to `false` in order to hide it. If you only want to show it when the mouse is inside, set the `pageControlRequiresMouseOver` property to `true`.
+The `pageControl` is visible by default and supports two different styles, `.dot` and `.circle`. Set the `showPageControl` property to `false` in order to hide it. If you only want to show it when the mouse is inside, set the `pageControlRequiresMouseOver` property to `true`.
 
 To change the size, override the default value of `indicatorSize` in `FLOPageControl.swift`.
 
 ####Arrow Controls
 The arrow controls are hidden by default. Set the `showArrowControls` property to `true` in order to show them. Arrows will be hidden automatically depending on if there is a previous/next page. If you only want to show them when the mouse is inside, set the `arrowControlsRequireMouseOver` property to `true`.
 
-To change the size, change the `ArrowSize` constant in `FLOPageViewController.swift`. To change the thickness, override the default value of `lineWidth` in `FLOArrowControl`'s `drawRect(:)` method.
+To change the size, change the `ArrowSize` constant in `FLOPageViewController.swift`. To change the thickness, override the default value of `lineWidth` in `FLOArrowControl`'s `draw(:)` method.
 
 ####Overlay
 By default, all controls will appear above the pages. You can change this behavior by setting the `overlayControls` property to `false`. If you do this, you may want to read the `pageSize` property to be able to size your pages appropriately.
@@ -33,7 +33,7 @@ The (optional) `backgroundColor` property is the color displayed behind the page
 As `FLOPageViewController` uses `NSPageController` under the hood, swipe gestures are supported by default.
 
 ##Requirements + Compatibility
-`FLOPageViewController` was built using Swift 2.0. It is compatible with OS X 10.10 and later. I've tested it on 10.10 and 10.11.
+`FLOPageViewController` requires Swift 3.0. It is compatible with macOS 10.10 and later. I've tested it on 10.10, 10.11 and 10.12.
 
 ##Installation
 Just add all files from the [`Source`](Source/) folder to your project and you're good to go.

@@ -10,50 +10,50 @@ import Cocoa
 
 class ViewController: NSViewController {
     
-    private weak var pageViewController: FLOPageViewController?
+    fileprivate weak var pageViewController: FLOPageViewController?
     
 // MARK: - NSViewController
     
-    override func prepareForSegue(segue: NSStoryboardSegue, sender: AnyObject?) {
-        super.prepareForSegue(segue, sender: sender)
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
         
         guard let pageViewController = segue.destinationController as? FLOPageViewController else { return }
         let storyboard = NSStoryboard(name: "Main", bundle: nil)
-        pageViewController.loadViewControllersFromStoryboard(storyboard, identifiers: ["1", "2", "3"])
+        pageViewController.loadViewControllers(["1", "2", "3"], from: storyboard)
         self.pageViewController = pageViewController
     }
     
 // MARK: - Page View Controller Settings
     
-    @IBAction func didChangePageControlState(sender: NSButton) {
+    @IBAction func didChangePageControlState(_ sender: NSButton) {
         self.pageViewController?.showPageControl = (sender.state == NSOnState)
     }
     
-    @IBAction func didChangeArrowControlState(sender: NSButton) {
+    @IBAction func didChangeArrowControlState(_ sender: NSButton) {
         self.pageViewController?.showArrowControls = (sender.state == NSOnState)
     }
     
-    @IBAction func didChangePageControlMouseOverState(sender: NSButton) {
+    @IBAction func didChangePageControlMouseOverState(_ sender: NSButton) {
         self.pageViewController?.pageControlRequiresMouseOver = (sender.state == NSOnState)
     }
     
-    @IBAction func didChangeArrowControlsMouseOverState(sender: NSButton) {
+    @IBAction func didChangeArrowControlsMouseOverState(_ sender: NSButton) {
         self.pageViewController?.arrowControlsRequireMouseOver = (sender.state == NSOnState)
     }
     
-    @IBAction func didChangeOverlayState(sender: NSButton) {
+    @IBAction func didChangeOverlayState(_ sender: NSButton) {
         self.pageViewController?.overlayControls = (sender.state == NSOnState)
     }
     
-    @IBAction func didSelectTintColor(sender: NSColorWell) {
+    @IBAction func didSelectTintColor(_ sender: NSColorWell) {
         self.pageViewController?.tintColor = sender.color
     }
     
-    @IBAction func didChangeCircleIndicatorState(sender: NSButton) {
-        self.pageViewController?.pageIndicatorStyle = (sender.state == NSOnState) ? .Circle : .Dot
+    @IBAction func didChangeCircleIndicatorState(_ sender: NSButton) {
+        self.pageViewController?.pageIndicatorStyle = (sender.state == NSOnState) ? .circle : .dot
     }
     
-    @IBAction func didSelectBackgroundColor(sender: NSColorWell) {
+    @IBAction func didSelectBackgroundColor(_ sender: NSColorWell) {
         self.pageViewController?.backgroundColor = sender.color
     }
     

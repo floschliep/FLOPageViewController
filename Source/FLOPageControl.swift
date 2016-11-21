@@ -10,7 +10,7 @@ import Cocoa
 
 class FLOPageControl: NSControl {
     
-    fileprivate var needsToRedrawIndicators = false
+    private var needsToRedrawIndicators = false
     
 // MARK: - Appearance
     
@@ -67,7 +67,7 @@ class FLOPageControl: NSControl {
         if self.numberOfPages > 1 {
             for index in 0...self.numberOfPages-1 {
                 var fill = true
-                let frame = self.frameForIndicatorAtIndex(index)
+                let frame = self.frameOfIndicator(at: index)
                 let lineWidth: CGFloat = 1
                 
                 switch (self.style, index == self.selectedPage) {
@@ -98,25 +98,25 @@ class FLOPageControl: NSControl {
     
     override func mouseDown(with theEvent: NSEvent) {
         let location = self.convert(theEvent.locationInWindow, from: nil)
-        self.highlightIndicatorAtLocation(location)
+        self.highlightIndicator(at: location)
     }
     
     override func mouseDragged(with theEvent: NSEvent) {
         let location = self.convert(theEvent.locationInWindow, from: nil)
-        self.highlightIndicatorAtLocation(location)
+        self.highlightIndicator(at: location)
     }
     
     override func mouseUp(with theEvent: NSEvent) {
         let location = self.convert(theEvent.locationInWindow, from: nil)
-        self.highlightIndicatorAtLocation(location, sendAction: true)
+        self.highlightIndicator(at: location, sendAction: true)
     }
     
 // MARK: - Helpers
     
-    fileprivate func highlightIndicatorAtLocation(_ location: NSPoint, sendAction: Bool = false) {
+    private func highlightIndicator(at location: NSPoint, sendAction: Bool = false) {
         var newPage = self.selectedPage
         for index in 0...self.numberOfPages-1 {
-            if NSPointInRect(location, self.frameForIndicatorAtIndex(index)) {
+            if NSPointInRect(location, self.frameOfIndicator(at: index)) {
                 newPage = index
                 break
             }
@@ -125,12 +125,11 @@ class FLOPageControl: NSControl {
             self.selectedPage = newPage
         }
         
-        guard sendAction else { return }
-        guard let target = self.target else { return }
-        NSApp.sendAction(self.action!, to: target, from: self)
+        guard sendAction, let target = self.target, let action = self.action else { return }
+        NSApp.sendAction(action, to: target, from: self)
     }
     
-    fileprivate func frameForIndicatorAtIndex(_ index: UInt) -> NSRect {
+    private func frameOfIndicator(at index: UInt) -> NSRect {
         let centerDrawingAroundSpace = (self.numberOfPages % 2 == 0)
         let centeredIndex = self.numberOfPages/2
         let centeredFrame = NSRect(x: NSMidX(self.bounds) - (centerDrawingAroundSpace ? self.indicatorSize*1.5 : self.indicatorSize/2), y: NSMidY(self.bounds) - self.indicatorSize/2, width: self.indicatorSize, height: self.indicatorSize)
@@ -139,7 +138,7 @@ class FLOPageControl: NSControl {
         return NSRect(x: NSMinX(centeredFrame) - distanceToCenteredIndex*self.indicatorSize*2, y: NSMidY(self.bounds) - self.indicatorSize/2, width: self.indicatorSize, height: self.indicatorSize)
     }
     
-    fileprivate func redrawIndicators() {
+    private func redrawIndicators() {
         self.needsToRedrawIndicators = true
         self.needsDisplay = true
     }

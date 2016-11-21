@@ -14,16 +14,16 @@ class FLOPageViewController: NSViewController {
     
     fileprivate weak var pageController: NSPageController!
     fileprivate weak var pageControl: FLOPageControl?
-    fileprivate weak var leftArrow: FLOArrowControl?
-    fileprivate weak var rightArrow: FLOArrowControl?
+    private weak var leftArrow: FLOArrowControl?
+    private weak var rightArrow: FLOArrowControl?
     
-    fileprivate weak var bottomPageControllerConstraint: NSLayoutConstraint?
+    private weak var bottomPageControllerConstraint: NSLayoutConstraint?
     // we are using left/right instead of leading/trailing b/c of the arrows; in case of an r-l lang, the viewControllers array will be reversed, which is simpler than dealing w/ leading/trailing arrows, as NSPageController doesn't support r-l langs
-    fileprivate weak var leftPageControllerConstraint: NSLayoutConstraint?
-    fileprivate weak var rightPageControllerConstraint: NSLayoutConstraint?
+    private weak var leftPageControllerConstraint: NSLayoutConstraint?
+    private weak var rightPageControllerConstraint: NSLayoutConstraint?
     
-    fileprivate var trackingRectTag: NSTrackingRectTag?
-    fileprivate var mouseInside = false
+    private var trackingRectTag: NSTrackingRectTag?
+    private var mouseInside = false
     
 // MARK: - Instantiation
     
@@ -43,7 +43,7 @@ class FLOPageViewController: NSViewController {
         self.setUp()
     }
     
-    fileprivate func setUp() {
+    private func setUp() {
         let pageController = NSPageController()
         pageController.view = NSView() // we need to create a view here (as we're not loading one from a nib) though we'll override it later
         pageController.view.translatesAutoresizingMaskIntoConstraints = false
@@ -88,7 +88,7 @@ class FLOPageViewController: NSViewController {
             if reverse {
                 self.viewControllers.reverseInPlace()
             }
-            self.pageController.arrangedObjects = self.viewControllers.map({ return NSNumber(value: self.viewControllers.index(of: $0)! as Int) })
+            self.pageController.arrangedObjects = self.viewControllers.map({ NSNumber(value: self.viewControllers.index(of: $0)!) })
             
             if reverse {
                 self.pageController.selectedIndex = self.viewControllers.count-1
@@ -98,8 +98,8 @@ class FLOPageViewController: NSViewController {
         }
     }
     
-    func loadViewControllersFromStoryboard(_ storyboard: NSStoryboard, identifiers: [String]) {
-        self.viewControllers = identifiers.map({ storyboard.instantiateController(withIdentifier: $0) as! NSViewController })
+    func loadViewControllers(_ viewControllerIdentifiers: [String], from storyboard: NSStoryboard) {
+        self.viewControllers = viewControllerIdentifiers.map({ storyboard.instantiateController(withIdentifier: $0) as! NSViewController })
     }
     
 // MARK: - Page Control
@@ -116,11 +116,11 @@ class FLOPageViewController: NSViewController {
         }
     }
     
-    fileprivate func updatePageControl() {
+    private func updatePageControl() {
         if self.showPageControl == true && self.pageControl == nil {
             let pageControl = FLOPageControl()
             pageControl.target = self
-            pageControl.action = #selector(FLOPageViewController.pageControlDidChangeSelection(_:))
+            pageControl.action = #selector(pageControlDidChangeSelection(_:))
             pageControl.color = self.tintColor
             pageControl.style = self.pageIndicatorStyle
             pageControl.translatesAutoresizingMaskIntoConstraints = false
@@ -136,14 +136,13 @@ class FLOPageViewController: NSViewController {
             self.view.addConstraint(NSLayoutConstraint(item: pageControl, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1, constant: -pageControl.indicatorSize))
             self.view.addConstraint(NSLayoutConstraint(item: pageControl, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: pageControl.indicatorSize))
             self.updateBottomConstraint()
-        } else if self.showPageControl == false && self.pageControl != nil {
-            self.pageControl!.removeFromSuperview()
-            self.pageControl = nil
+        } else if self.showPageControl == false, let pageControl = self.pageControl {
+            pageControl.removeFromSuperview()
             self.updateBottomConstraint()
         }
     }
     
-    fileprivate func updateBottomConstraint() {
+    private func updateBottomConstraint() {
         guard let bottomConstraint = self.bottomPageControllerConstraint else { return }
         
         if let pageControl = self.pageControl {
@@ -169,7 +168,7 @@ class FLOPageViewController: NSViewController {
         }
     }
     
-    fileprivate func updateArrowControls() {
+    private func updateArrowControls() {
         if self.showArrowControls == true && self.leftArrow == nil {
             let leftArrow = FLOArrowControl()
             leftArrow.target = self
@@ -184,7 +183,7 @@ class FLOPageViewController: NSViewController {
             let rightArrow = FLOArrowControl()
             rightArrow.target = self
             rightArrow.action = #selector(FLOPageViewController.didPressArrowControl(_:))
-            rightArrow.type = .right
+            rightArrow.direction = .right
             rightArrow.color = self.tintColor
             rightArrow.translatesAutoresizingMaskIntoConstraints = false
             rightArrow.wantsLayer = true
@@ -215,7 +214,7 @@ class FLOPageViewController: NSViewController {
         }
     }
     
-    fileprivate func updateSideConstraints() {
+    private func updateSideConstraints() {
         guard let leftConstraint = self.leftPageControllerConstraint, let rightConstraint = self.rightPageControllerConstraint else { return }
         
         if self.leftArrow != nil && !self.overlayControls {
@@ -228,7 +227,7 @@ class FLOPageViewController: NSViewController {
     }
     
     func didPressArrowControl(_ sender: FLOArrowControl) {
-        switch sender.type {
+        switch sender.direction {
         case .left:
             self.pageController.navigateBack(nil)
         case .right:
@@ -303,7 +302,7 @@ class FLOPageViewController: NSViewController {
     
 // MARK: - Helpers
     
-    fileprivate func updateMouseTracking() {
+    private func updateMouseTracking() {
         if (self.pageControlRequiresMouseOver || self.arrowControlsRequireMouseOver) && self.trackingRectTag == nil {
             self.trackingRectTag = self.view.addTrackingRect(self.view.bounds, owner: self, userData: nil, assumeInside: false)
         } else if (!self.pageControlRequiresMouseOver && !self.arrowControlsRequireMouseOver) && self.trackingRectTag != nil {
@@ -312,7 +311,7 @@ class FLOPageViewController: NSViewController {
         }
     }
     
-    fileprivate func hidePageControl(_ flag: Bool = true) {
+    private func hidePageControl(_ flag: Bool = true) {
         if self.pageControlRequiresMouseOver {
             self.pageControl?.isHidden = flag ? true : !self.mouseInside
         } else {
@@ -333,11 +332,11 @@ class FLOPageViewController: NSViewController {
         }
     }
     
-    fileprivate func updateBackgroundColor() {
+    private func updateBackgroundColor() {
         self.view.layer?.backgroundColor = self.backgroundColor?.cgColor
     }
     
-    fileprivate func updatePages() {
+    private func updatePages() {
         self.pageControl?.numberOfPages = UInt(self.viewControllers.count)
         self.pageControl?.selectedPage = UInt(self.pageController.selectedIndex)
     }

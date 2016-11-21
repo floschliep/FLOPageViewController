@@ -10,7 +10,7 @@ import Cocoa
 
 class FLOArrowControl: NSControl {
 
-    fileprivate var mouseDown = false {
+    private var mouseDown = false {
         didSet {
             self.needsDisplay = true
         }
@@ -18,12 +18,12 @@ class FLOArrowControl: NSControl {
     
 // MARK: - Properties
     
-    enum ArrowType {
+    enum Direction {
         case left
         case right
     }
     
-    var type = ArrowType.left {
+    var direction = Direction.left {
         didSet {
             self.needsDisplay = true
         }
@@ -38,7 +38,7 @@ class FLOArrowControl: NSControl {
 // MARK: - Drawing
     
     override func draw(_ dirtyRect: NSRect) {
-        let drawRightArrow = self.type == .right
+        let drawRightArrow = self.direction == .right
         let lineWidth: CGFloat = 4
         
         let bezierPath = NSBezierPath()
@@ -63,8 +63,8 @@ class FLOArrowControl: NSControl {
         super.mouseUp(with: theEvent)
         self.mouseDown = false
         
-        guard let target = self.target else { return }
-        NSApp.sendAction(self.action!, to: target, from: self)
+        guard let target = self.target, let action = self.action else { return }
+        NSApp.sendAction(action, to: target, from: self)
     }
     
 }

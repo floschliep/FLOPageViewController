@@ -19,7 +19,7 @@ class ViewController: NSViewController {
         
         guard let pageViewController = segue.destinationController as? FLOPageViewController else { return }
         let storyboard = NSStoryboard(name: "Main", bundle: nil)
-        pageViewController.loadViewControllersFromStoryboard(storyboard, identifiers: ["1", "2", "3"])
+        pageViewController.loadViewControllers(["1", "2", "3"], from: storyboard)
         self.pageViewController = pageViewController
     }
     

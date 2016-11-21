@@ -10,7 +10,7 @@ import Cocoa
 
 class FLOArrowControl: NSControl {
 
-    private var mouseDown = false {
+    fileprivate var mouseDown = false {
         didSet {
             self.needsDisplay = true
         }
@@ -18,18 +18,18 @@ class FLOArrowControl: NSControl {
     
 // MARK: - Properties
     
-    enum Type {
-        case Left
-        case Right
+    enum ArrowType {
+        case left
+        case right
     }
     
-    var type = Type.Left {
+    var type = ArrowType.left {
         didSet {
             self.needsDisplay = true
         }
     }
     
-    var color = NSColor.blackColor() {
+    var color = NSColor.black {
         didSet {
             self.needsDisplay = true
         }
@@ -37,34 +37,34 @@ class FLOArrowControl: NSControl {
     
 // MARK: - Drawing
     
-    override func drawRect(dirtyRect: NSRect) {
-        let drawRightArrow = self.type == .Right
+    override func draw(_ dirtyRect: NSRect) {
+        let drawRightArrow = self.type == .right
         let lineWidth: CGFloat = 4
         
         let bezierPath = NSBezierPath()
-        bezierPath.moveToPoint(NSPoint(x: drawRightArrow ? NSMinX(self.bounds) : NSMaxX(self.bounds), y: NSMaxY(self.bounds)))
-        bezierPath.lineToPoint(NSPoint(x: drawRightArrow ? NSMaxX(self.bounds)-lineWidth*0.5 : NSMinX(self.bounds)+lineWidth*0.5, y: NSMidY(self.bounds)))
-        bezierPath.lineToPoint(NSPoint(x: drawRightArrow ? NSMinX(self.bounds) : NSMaxX(self.bounds), y: NSMinY(self.bounds)))
+        bezierPath.move(to: NSPoint(x: drawRightArrow ? NSMinX(self.bounds) : NSMaxX(self.bounds), y: NSMaxY(self.bounds)))
+        bezierPath.line(to: NSPoint(x: drawRightArrow ? NSMaxX(self.bounds)-lineWidth*0.5 : NSMinX(self.bounds)+lineWidth*0.5, y: NSMidY(self.bounds)))
+        bezierPath.line(to: NSPoint(x: drawRightArrow ? NSMinX(self.bounds) : NSMaxX(self.bounds), y: NSMinY(self.bounds)))
         bezierPath.lineWidth = lineWidth
-        bezierPath.lineCapStyle = .RoundLineCapStyle
-        bezierPath.lineJoinStyle = .RoundLineJoinStyle
-        (self.mouseDown ? self.color : self.color.colorWithAlphaComponent(0.33)).setStroke()
+        bezierPath.lineCapStyle = .roundLineCapStyle
+        bezierPath.lineJoinStyle = .roundLineJoinStyle
+        (self.mouseDown ? self.color : self.color.withAlphaComponent(0.33)).setStroke()
         bezierPath.stroke()
     }
     
 // MARK: - Mouse
     
-    override func mouseDown(theEvent: NSEvent) {
-        super.mouseDown(theEvent)
+    override func mouseDown(with theEvent: NSEvent) {
+        super.mouseDown(with: theEvent)
         self.mouseDown = true
     }
     
-    override func mouseUp(theEvent: NSEvent) {
-        super.mouseUp(theEvent)
+    override func mouseUp(with theEvent: NSEvent) {
+        super.mouseUp(with: theEvent)
         self.mouseDown = false
         
         guard let target = self.target else { return }
-        NSApp.sendAction(self.action, to: target, from: self)
+        NSApp.sendAction(self.action!, to: target, from: self)
     }
     
 }

@@ -10,13 +10,13 @@ import Cocoa
 
 @IBDesignable class ColoredView: NSView {
 
-    @IBInspectable var backgroundColor: NSColor = .windowBackgroundColor() {
+    @IBInspectable var backgroundColor: NSColor = .windowBackgroundColor {
         didSet {
             self.needsDisplay = true
         }
     }
     
-    override func drawRect(dirtyRect: NSRect) {
+    override func draw(_ dirtyRect: NSRect) {
         self.backgroundColor.setFill()
         NSRectFill(self.bounds)
     }

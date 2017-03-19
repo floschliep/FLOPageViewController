@@ -132,7 +132,7 @@ class FLOPageControl: NSControl {
     private func frameOfIndicator(at index: UInt) -> NSRect {
         let centerDrawingAroundSpace = (self.numberOfPages % 2 == 0)
         let centeredIndex = self.numberOfPages/2
-        let centeredFrame = NSRect(x: NSMidX(self.bounds) - (centerDrawingAroundSpace ? self.indicatorSize*1.5 : self.indicatorSize/2), y: NSMidY(self.bounds) - self.indicatorSize/2, width: self.indicatorSize, height: self.indicatorSize)
+        let centeredFrame = NSRect(x: NSMidX(self.bounds) - (centerDrawingAroundSpace ? -self.indicatorSize/2 : self.indicatorSize/2), y: NSMidY(self.bounds) - self.indicatorSize/2, width: self.indicatorSize, height: self.indicatorSize)
         let distanceToCenteredIndex = CGFloat(centeredIndex)-CGFloat(index)
         
         return NSRect(x: NSMinX(centeredFrame) - distanceToCenteredIndex*self.indicatorSize*2, y: NSMidY(self.bounds) - self.indicatorSize/2, width: self.indicatorSize, height: self.indicatorSize)

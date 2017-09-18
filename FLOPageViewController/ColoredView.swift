@@ -18,7 +18,7 @@ import Cocoa
     
     override func draw(_ dirtyRect: NSRect) {
         self.backgroundColor.setFill()
-        NSRectFill(self.bounds)
+        self.bounds.fill()
     }
     
 }

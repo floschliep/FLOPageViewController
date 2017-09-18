@@ -8,7 +8,8 @@
 
 import Cocoa
 
-class FLOPageControl: NSControl {
+@objc(FLOPageControl)
+class PageControl: NSControl {
     
     private var needsToRedrawIndicators = false
     
@@ -26,7 +27,8 @@ class FLOPageControl: NSControl {
         }
     }
     
-    enum Style {
+    @objc
+    enum Style: Int {
         case dot
         case circle
     }

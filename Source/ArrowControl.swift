@@ -8,7 +8,8 @@
 
 import Cocoa
 
-class FLOArrowControl: NSControl {
+@objc(FLOArrowControl)
+class ArrowControl: NSControl {
 
     private var mouseDown = false {
         didSet {

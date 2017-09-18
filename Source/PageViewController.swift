@@ -10,25 +10,27 @@ import Cocoa
 
 private let ArrowSize = NSSize(width: 20, height: 40)
 
-class FLOPageViewController: NSViewController {
+@objc(FLOPageViewController)
+class PageViewController: NSViewController {
     
     fileprivate weak var pageController: NSPageController!
-    fileprivate weak var pageControl: FLOPageControl?
-    private weak var leftArrow: FLOArrowControl?
-    private weak var rightArrow: FLOArrowControl?
+    fileprivate weak var pageControl: PageControl?
+    private weak var leftArrow: ArrowControl?
+    private weak var rightArrow: ArrowControl?
     
     private weak var bottomPageControllerConstraint: NSLayoutConstraint?
     // we are using left/right instead of leading/trailing b/c of the arrows; in case of an r-l lang, the viewControllers array will be reversed, which is simpler than dealing w/ leading/trailing arrows, as NSPageController doesn't support r-l langs
     private weak var leftPageControllerConstraint: NSLayoutConstraint?
     private weak var rightPageControllerConstraint: NSLayoutConstraint?
     
-    private var trackingRectTag: NSTrackingRectTag?
+    private var trackingRectTag: NSView.TrackingRectTag?
     private var mouseInside = false
     
 // MARK: - Instantiation
     
+    @objc
     init() {
-        super.init(nibName: nil, bundle: nil)!
+        super.init(nibName: nil, bundle: nil)
         self.setUp()
         self.view = NSView()
     }
@@ -38,7 +40,7 @@ class FLOPageViewController: NSViewController {
         self.setUp()
     }
     
-    override init?(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    override init(nibName nibNameOrNil: NSNib.Name?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.setUp()
     }
@@ -81,7 +83,7 @@ class FLOPageViewController: NSViewController {
     
 // MARK: - View Controller Management
     
-    var viewControllers: [NSViewController] = [] {
+    @objc var viewControllers: [NSViewController] = [] {
         didSet {
             let reverse = (NSApp.userInterfaceLayoutDirection == .rightToLeft && self.viewControllers.count > 1)
             
@@ -98,19 +100,22 @@ class FLOPageViewController: NSViewController {
         }
     }
     
+    @objc
     func loadViewControllers(_ viewControllerIdentifiers: [String], from storyboard: NSStoryboard) {
-        self.viewControllers = viewControllerIdentifiers.map({ storyboard.instantiateController(withIdentifier: $0) as! NSViewController })
+        self.viewControllers = viewControllerIdentifiers.map({
+            storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier($0)) as! NSViewController
+        })
     }
     
 // MARK: - Page Control
 
-    var showPageControl = true {
+    @objc var showPageControl = true {
         didSet {
             self.updatePageControl()
         }
     }
     
-    var pageIndicatorStyle = FLOPageControl.Style.dot {
+    @objc var pageIndicatorStyle = PageControl.Style.dot {
         didSet {
             self.pageControl?.style = self.pageIndicatorStyle
         }
@@ -118,7 +123,7 @@ class FLOPageViewController: NSViewController {
     
     private func updatePageControl() {
         if self.showPageControl == true && self.pageControl == nil {
-            let pageControl = FLOPageControl()
+            let pageControl = PageControl()
             pageControl.target = self
             pageControl.action = #selector(pageControlDidChangeSelection(_:))
             pageControl.color = self.tintColor
@@ -156,13 +161,14 @@ class FLOPageViewController: NSViewController {
         }
     }
     
-    func pageControlDidChangeSelection(_ sender: FLOPageControl) {
+    @objc
+    func pageControlDidChangeSelection(_ sender: PageControl) {
         self.pageController.animator().selectedIndex = Int(sender.selectedPage)
     }
     
 // MARK: - Arrow Controls
     
-    var showArrowControls = false {
+    @objc var showArrowControls = false {
         didSet {
             self.updateArrowControls()
         }
@@ -170,9 +176,9 @@ class FLOPageViewController: NSViewController {
     
     private func updateArrowControls() {
         if self.showArrowControls == true && self.leftArrow == nil {
-            let leftArrow = FLOArrowControl()
+            let leftArrow = ArrowControl()
             leftArrow.target = self
-            leftArrow.action = #selector(FLOPageViewController.didPressArrowControl(_:))
+            leftArrow.action = #selector(didPressArrowControl(_:))
             leftArrow.color = self.tintColor
             leftArrow.translatesAutoresizingMaskIntoConstraints = false
             leftArrow.wantsLayer = true
@@ -180,9 +186,9 @@ class FLOPageViewController: NSViewController {
             self.view.addSubview(leftArrow)
             self.leftArrow = leftArrow
             
-            let rightArrow = FLOArrowControl()
+            let rightArrow = ArrowControl()
             rightArrow.target = self
-            rightArrow.action = #selector(FLOPageViewController.didPressArrowControl(_:))
+            rightArrow.action = #selector(didPressArrowControl(_:))
             rightArrow.direction = .right
             rightArrow.color = self.tintColor
             rightArrow.translatesAutoresizingMaskIntoConstraints = false
@@ -226,7 +232,8 @@ class FLOPageViewController: NSViewController {
         }
     }
     
-    func didPressArrowControl(_ sender: FLOArrowControl) {
+    @objc
+    func didPressArrowControl(_ sender: ArrowControl) {
         switch sender.direction {
         case .left:
             self.pageController.navigateBack(nil)
@@ -237,28 +244,28 @@ class FLOPageViewController: NSViewController {
     
 // MARK: - Appearance + Behavior
     
-    var pageControlRequiresMouseOver = false {
+    @objc var pageControlRequiresMouseOver = false {
         didSet {
             self.updateMouseTracking()
             self.hidePageControl(self.pageControlRequiresMouseOver)
         }
     }
     
-    var arrowControlsRequireMouseOver = false {
+    @objc var arrowControlsRequireMouseOver = false {
         didSet {
             self.updateMouseTracking()
             self.hideArrowControls(self.arrowControlsRequireMouseOver)
         }
     }
     
-    var overlayControls = true {
+    @objc var overlayControls = true {
         didSet {
             self.updateBottomConstraint()
             self.updateSideConstraints()
         }
     }
     
-    var tintColor = NSColor.black {
+    @objc var tintColor = NSColor.black {
         didSet {
             self.pageControl?.color = self.tintColor
             self.leftArrow?.color = self.tintColor
@@ -266,7 +273,7 @@ class FLOPageViewController: NSViewController {
         }
     }
     
-    var backgroundColor: NSColor? {
+    @objc var backgroundColor: NSColor? {
         didSet {
             self.updateBackgroundColor()
         }
@@ -343,14 +350,14 @@ class FLOPageViewController: NSViewController {
     
 }
 
-extension FLOPageViewController: NSPageControllerDelegate {
+extension PageViewController: NSPageControllerDelegate {
     
-    func pageController(_ pageController: NSPageController, identifierFor object: Any) -> String {
+    func pageController(_ pageController: NSPageController, identifierFor object: Any) -> NSPageController.ObjectIdentifier {
         guard let number = object as? NSNumber else { fatalError("The arrangedObjects array has been changed manually. This is not allowed! Please use the viewControllers array to manage the pages.") }
-        return number.stringValue
+        return NSPageController.ObjectIdentifier(number.stringValue)
     }
     
-    func pageController(_ pageController: NSPageController, viewControllerForIdentifier identifier: String) -> NSViewController {
+    func pageController(_ pageController: NSPageController, viewControllerForIdentifier identifier: NSPageController.ObjectIdentifier) -> NSViewController {
         let index = (identifier as NSString).integerValue
         return self.viewControllers[index]
     }
@@ -371,7 +378,7 @@ extension FLOPageViewController: NSPageControllerDelegate {
     
 }
 
-extension FLOPageViewController {
+extension PageViewController {
     
     func debugQuickLookObject() -> AnyObject {
         return self.view

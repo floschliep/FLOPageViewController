@@ -7,18 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1335F65C1C5118BD0061ADF6 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D69B101C50F8FD00CE3E6E /* PageControl.swift */; };
-		1335F65D1C5118BF0061ADF6 /* ArrowControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D69B121C51100A00CE3E6E /* ArrowControl.swift */; };
 		13773EBC1C4E936A003FF521 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13773EBB1C4E936A003FF521 /* AppDelegate.swift */; };
 		13773EC01C4E936A003FF521 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13773EBF1C4E936A003FF521 /* Assets.xcassets */; };
-		13773EC31C4E936A003FF521 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13773EC11C4E936A003FF521 /* Main.storyboard */; };
 		13773ECE1C4E936A003FF521 /* FLOPageViewControllerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13773ECD1C4E936A003FF521 /* FLOPageViewControllerUITests.swift */; };
-		13773ED91C4E9522003FF521 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13773ED81C4E9522003FF521 /* PageViewController.swift */; };
-		13773EDA1C4E9522003FF521 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13773ED81C4E9522003FF521 /* PageViewController.swift */; };
 		13773EDE1C4E9E59003FF521 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13773EDD1C4E9E59003FF521 /* ViewController.swift */; };
+		138929351F70075300DE6DFB /* FLOPageViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 138929331F70075300DE6DFB /* FLOPageViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		138929381F70075300DE6DFB /* FLOPageViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 138929311F70075200DE6DFB /* FLOPageViewController.framework */; };
+		138929391F70075300DE6DFB /* FLOPageViewController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 138929311F70075200DE6DFB /* FLOPageViewController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1389293E1F70078000DE6DFB /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13773ED81C4E9522003FF521 /* PageViewController.swift */; };
+		1389293F1F70078000DE6DFB /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D69B101C50F8FD00CE3E6E /* PageControl.swift */; };
+		138929401F70078000DE6DFB /* ArrowControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D69B121C51100A00CE3E6E /* ArrowControl.swift */; };
 		1396A9F61C4FD1E200D89DF1 /* ColoredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396A9F51C4FD1E200D89DF1 /* ColoredView.swift */; };
-		13D69B111C50F8FD00CE3E6E /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D69B101C50F8FD00CE3E6E /* PageControl.swift */; };
-		13D69B131C51100A00CE3E6E /* ArrowControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D69B121C51100A00CE3E6E /* ArrowControl.swift */; };
+		13FB49751F9A092B00C1AAFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13773EC11C4E936A003FF521 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,22 +29,46 @@
 			remoteGlobalIDString = 13773EB71C4E936A003FF521;
 			remoteInfo = FLOPageViewController;
 		};
+		138929361F70075300DE6DFB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 13773EB01C4E936A003FF521 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 138929301F70075200DE6DFB;
+			remoteInfo = FLOPageViewController;
+		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		1389293D1F70075300DE6DFB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				138929391F70075300DE6DFB /* FLOPageViewController.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		13773EB81C4E936A003FF521 /* FLOPageViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FLOPageViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13773EBB1C4E936A003FF521 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		13773EBF1C4E936A003FF521 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		13773EB81C4E936A003FF521 /* FLOPageViewControllerSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FLOPageViewControllerSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13773EBB1C4E936A003FF521 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "../Sample App/AppDelegate.swift"; sourceTree = "<group>"; };
+		13773EBF1C4E936A003FF521 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../Sample App/Assets.xcassets"; sourceTree = "<group>"; };
 		13773EC21C4E936A003FF521 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		13773EC41C4E936A003FF521 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13773EC91C4E936A003FF521 /* FLOPageViewControllerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FLOPageViewControllerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		13773ECD1C4E936A003FF521 /* FLOPageViewControllerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FLOPageViewControllerUITests.swift; sourceTree = "<group>"; };
 		13773ECF1C4E936A003FF521 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13773ED81C4E9522003FF521 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
-		13773EDD1C4E9E59003FF521 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		1396A9F51C4FD1E200D89DF1 /* ColoredView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColoredView.swift; sourceTree = "<group>"; };
+		13773EDD1C4E9E59003FF521 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = "../Sample App/ViewController.swift"; sourceTree = "<group>"; };
+		138929311F70075200DE6DFB /* FLOPageViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FLOPageViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		138929331F70075300DE6DFB /* FLOPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FLOPageViewController.h; sourceTree = "<group>"; };
+		138929341F70075300DE6DFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1396A9F51C4FD1E200D89DF1 /* ColoredView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColoredView.swift; path = "../Sample App/ColoredView.swift"; sourceTree = "<group>"; };
 		13D69B101C50F8FD00CE3E6E /* PageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
 		13D69B121C51100A00CE3E6E /* ArrowControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrowControl.swift; sourceTree = "<group>"; };
+		13FB49731F9A086400C1AAFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Sample App/Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,10 +76,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				138929381F70075300DE6DFB /* FLOPageViewController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		13773EC61C4E936A003FF521 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1389292D1F70075200DE6DFB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -68,8 +100,9 @@
 		13773EAF1C4E936A003FF521 = {
 			isa = PBXGroup;
 			children = (
-				13773EBA1C4E936A003FF521 /* FLOPageViewController */,
-				13773ECC1C4E936A003FF521 /* FLOPageViewControllerUITests */,
+				13773EBA1C4E936A003FF521 /* Sample App */,
+				138929321F70075300DE6DFB /* FLOPageViewController */,
+				13773ECC1C4E936A003FF521 /* UI Tests */,
 				13773EB91C4E936A003FF521 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -77,64 +110,79 @@
 		13773EB91C4E936A003FF521 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13773EB81C4E936A003FF521 /* FLOPageViewController.app */,
+				13773EB81C4E936A003FF521 /* FLOPageViewControllerSample.app */,
 				13773EC91C4E936A003FF521 /* FLOPageViewControllerUITests.xctest */,
+				138929311F70075200DE6DFB /* FLOPageViewController.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		13773EBA1C4E936A003FF521 /* FLOPageViewController */ = {
+		13773EBA1C4E936A003FF521 /* Sample App */ = {
 			isa = PBXGroup;
 			children = (
 				13773EBB1C4E936A003FF521 /* AppDelegate.swift */,
 				13773EDD1C4E9E59003FF521 /* ViewController.swift */,
-				13D69B0F1C50F89A00CE3E6E /* Source */,
+				1396A9F51C4FD1E200D89DF1 /* ColoredView.swift */,
 				13773EBF1C4E936A003FF521 /* Assets.xcassets */,
 				13773EC11C4E936A003FF521 /* Main.storyboard */,
-				13773EC41C4E936A003FF521 /* Info.plist */,
-				1396A9F51C4FD1E200D89DF1 /* ColoredView.swift */,
+				13FB49731F9A086400C1AAFD /* Info.plist */,
 			);
+			name = "Sample App";
 			path = FLOPageViewController;
 			sourceTree = "<group>";
 		};
-		13773ECC1C4E936A003FF521 /* FLOPageViewControllerUITests */ = {
+		13773ECC1C4E936A003FF521 /* UI Tests */ = {
 			isa = PBXGroup;
 			children = (
 				13773ECD1C4E936A003FF521 /* FLOPageViewControllerUITests.swift */,
 				13773ECF1C4E936A003FF521 /* Info.plist */,
 			);
-			path = FLOPageViewControllerUITests;
+			path = "UI Tests";
 			sourceTree = "<group>";
 		};
-		13D69B0F1C50F89A00CE3E6E /* Source */ = {
+		138929321F70075300DE6DFB /* FLOPageViewController */ = {
 			isa = PBXGroup;
 			children = (
+				138929331F70075300DE6DFB /* FLOPageViewController.h */,
 				13773ED81C4E9522003FF521 /* PageViewController.swift */,
 				13D69B101C50F8FD00CE3E6E /* PageControl.swift */,
 				13D69B121C51100A00CE3E6E /* ArrowControl.swift */,
+				138929341F70075300DE6DFB /* Info.plist */,
 			);
-			name = Source;
-			path = ../Source;
+			path = FLOPageViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		1389292E1F70075200DE6DFB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				138929351F70075300DE6DFB /* FLOPageViewController.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		13773EB71C4E936A003FF521 /* FLOPageViewController */ = {
+		13773EB71C4E936A003FF521 /* FLOPageViewControllerSample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13773ED21C4E936A003FF521 /* Build configuration list for PBXNativeTarget "FLOPageViewController" */;
+			buildConfigurationList = 13773ED21C4E936A003FF521 /* Build configuration list for PBXNativeTarget "FLOPageViewControllerSample" */;
 			buildPhases = (
 				13773EB41C4E936A003FF521 /* Sources */,
 				13773EB51C4E936A003FF521 /* Frameworks */,
 				13773EB61C4E936A003FF521 /* Resources */,
+				1389293D1F70075300DE6DFB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				138929371F70075300DE6DFB /* PBXTargetDependency */,
 			);
-			name = FLOPageViewController;
+			name = FLOPageViewControllerSample;
 			productName = FLOPageViewController;
-			productReference = 13773EB81C4E936A003FF521 /* FLOPageViewController.app */;
+			productReference = 13773EB81C4E936A003FF521 /* FLOPageViewControllerSample.app */;
 			productType = "com.apple.product-type.application";
 		};
 		13773EC81C4E936A003FF521 /* FLOPageViewControllerUITests */ = {
@@ -155,6 +203,24 @@
 			productReference = 13773EC91C4E936A003FF521 /* FLOPageViewControllerUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		138929301F70075200DE6DFB /* FLOPageViewController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1389293A1F70075300DE6DFB /* Build configuration list for PBXNativeTarget "FLOPageViewController" */;
+			buildPhases = (
+				1389292C1F70075200DE6DFB /* Sources */,
+				1389292D1F70075200DE6DFB /* Frameworks */,
+				1389292E1F70075200DE6DFB /* Headers */,
+				1389292F1F70075200DE6DFB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FLOPageViewController;
+			productName = FLOPageViewController;
+			productReference = 138929311F70075200DE6DFB /* FLOPageViewController.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -174,6 +240,10 @@
 						LastSwiftMigration = 0900;
 						TestTargetID = 13773EB71C4E936A003FF521;
 					};
+					138929301F70075200DE6DFB = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 13773EB31C4E936A003FF521 /* Build configuration list for PBXProject "FLOPageViewController" */;
@@ -189,8 +259,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13773EB71C4E936A003FF521 /* FLOPageViewController */,
+				13773EB71C4E936A003FF521 /* FLOPageViewControllerSample */,
 				13773EC81C4E936A003FF521 /* FLOPageViewControllerUITests */,
+				138929301F70075200DE6DFB /* FLOPageViewController */,
 			);
 		};
 /* End PBXProject section */
@@ -201,11 +272,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				13773EC01C4E936A003FF521 /* Assets.xcassets in Resources */,
-				13773EC31C4E936A003FF521 /* Main.storyboard in Resources */,
+				13FB49751F9A092B00C1AAFD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		13773EC71C4E936A003FF521 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1389292F1F70075200DE6DFB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -220,9 +298,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				13773EDE1C4E9E59003FF521 /* ViewController.swift in Sources */,
-				13D69B131C51100A00CE3E6E /* ArrowControl.swift in Sources */,
-				13D69B111C50F8FD00CE3E6E /* PageControl.swift in Sources */,
-				13773ED91C4E9522003FF521 /* PageViewController.swift in Sources */,
 				13773EBC1C4E936A003FF521 /* AppDelegate.swift in Sources */,
 				1396A9F61C4FD1E200D89DF1 /* ColoredView.swift in Sources */,
 			);
@@ -232,10 +307,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1335F65C1C5118BD0061ADF6 /* PageControl.swift in Sources */,
-				1335F65D1C5118BF0061ADF6 /* ArrowControl.swift in Sources */,
 				13773ECE1C4E936A003FF521 /* FLOPageViewControllerUITests.swift in Sources */,
-				13773EDA1C4E9522003FF521 /* PageViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1389292C1F70075200DE6DFB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1389293F1F70078000DE6DFB /* PageControl.swift in Sources */,
+				138929401F70078000DE6DFB /* ArrowControl.swift in Sources */,
+				1389293E1F70078000DE6DFB /* PageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,8 +326,13 @@
 /* Begin PBXTargetDependency section */
 		13773ECB1C4E936A003FF521 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13773EB71C4E936A003FF521 /* FLOPageViewController */;
+			target = 13773EB71C4E936A003FF521 /* FLOPageViewControllerSample */;
 			targetProxy = 13773ECA1C4E936A003FF521 /* PBXContainerItemProxy */;
+		};
+		138929371F70075300DE6DFB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 138929301F70075200DE6DFB /* FLOPageViewController */;
+			targetProxy = 138929361F70075300DE6DFB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -256,6 +343,7 @@
 				13773EC21C4E936A003FF521 /* Base */,
 			);
 			name = Main.storyboard;
+			path = "../Sample App";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -361,10 +449,11 @@
 		13773ED31C4E936A003FF521 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_STRICT_PROTOTYPES = NO;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = FLOPageViewController/Info.plist;
+				INFOPLIST_FILE = "Sample App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.floschliep.FLOPageViewController;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -376,10 +465,11 @@
 		13773ED41C4E936A003FF521 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_STRICT_PROTOTYPES = NO;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = FLOPageViewController/Info.plist;
+				INFOPLIST_FILE = "Sample App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.floschliep.FLOPageViewController;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -418,6 +508,69 @@
 			};
 			name = Release;
 		};
+		1389293B1F70075300DE6DFB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = FLOPageViewController/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appiculous.FLOPageViewController;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		1389293C1F70075300DE6DFB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = FLOPageViewController/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appiculous.FLOPageViewController;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -430,7 +583,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13773ED21C4E936A003FF521 /* Build configuration list for PBXNativeTarget "FLOPageViewController" */ = {
+		13773ED21C4E936A003FF521 /* Build configuration list for PBXNativeTarget "FLOPageViewControllerSample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13773ED31C4E936A003FF521 /* Debug */,
@@ -444,6 +597,15 @@
 			buildConfigurations = (
 				13773ED61C4E936A003FF521 /* Debug */,
 				13773ED71C4E936A003FF521 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1389293A1F70075300DE6DFB /* Build configuration list for PBXNativeTarget "FLOPageViewController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1389293B1F70075300DE6DFB /* Debug */,
+				1389293C1F70075300DE6DFB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

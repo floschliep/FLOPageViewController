@@ -10,10 +10,17 @@ import Cocoa
 
 private let ArrowSize = NSSize(width: 20, height: 40)
 
+@objc(FLOPageViewControllerDelegate)
+public protocol PageViewControllerDelegate: class {
+    func pageViewController(_ pageViewController: PageViewController, didSelectPage pageIndex: Int)
+}
+
 @objc(FLOPageViewController)
-class PageViewController: NSViewController {
+public class PageViewController: NSViewController {
     
-    fileprivate weak var pageController: NSPageController!
+    @objc public weak var delegate: PageViewControllerDelegate?
+    
+    fileprivate weak var pageController: _FLOPageController!
     fileprivate weak var pageControl: PageControl?
     private weak var leftArrow: ArrowControl?
     private weak var rightArrow: ArrowControl?
@@ -29,24 +36,25 @@ class PageViewController: NSViewController {
 // MARK: - Instantiation
     
     @objc
-    init() {
+    public init() {
         super.init(nibName: nil, bundle: nil)
         self.setUp()
         self.view = NSView()
+        self.viewDidLoad()
     }
     
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.setUp()
     }
     
-    override init(nibName nibNameOrNil: NSNib.Name?, bundle nibBundleOrNil: Bundle?) {
+    public override init(nibName nibNameOrNil: NSNib.Name?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.setUp()
     }
     
     private func setUp() {
-        let pageController = NSPageController()
+        let pageController = _FLOPageController()
         pageController.view = NSView() // we need to create a view here (as we're not loading one from a nib) though we'll override it later
         pageController.view.translatesAutoresizingMaskIntoConstraints = false
         pageController.delegate = self
@@ -58,7 +66,7 @@ class PageViewController: NSViewController {
     
 // MARK: - NSViewController
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.wantsLayer = true
@@ -81,9 +89,17 @@ class PageViewController: NSViewController {
         self.updateArrowControls()
     }
     
+    public override func viewDidLayout() {
+        super.viewDidLayout()
+        
+        for vc in self.viewControllers {
+            vc.view.frame = self.view.bounds
+        }
+    }
+    
 // MARK: - View Controller Management
     
-    @objc var viewControllers: [NSViewController] = [] {
+    @objc public var viewControllers: [NSViewController] = [] {
         didSet {
             let reverse = (NSApp.userInterfaceLayoutDirection == .rightToLeft && self.viewControllers.count > 1)
             
@@ -91,6 +107,7 @@ class PageViewController: NSViewController {
                 self.viewControllers.reverseInPlace()
             }
             self.pageController.arrangedObjects = self.viewControllers.map({ NSNumber(value: self.viewControllers.index(of: $0)!) })
+            self.pageController.scrollingEnabled = (self.viewControllers.count > 1)
             
             if reverse {
                 self.pageController.selectedIndex = self.viewControllers.count-1
@@ -101,21 +118,32 @@ class PageViewController: NSViewController {
     }
     
     @objc
-    func loadViewControllers(_ viewControllerIdentifiers: [String], from storyboard: NSStoryboard) {
+    public func loadViewControllers(_ viewControllerIdentifiers: [String], from storyboard: NSStoryboard) {
         self.viewControllers = viewControllerIdentifiers.map({
             storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier($0)) as! NSViewController
         })
     }
     
 // MARK: - Page Control
+    
+    @objc
+    public var selectedPage: Int {
+        get {
+            return self.pageController.selectedIndex
+        }
+        set {
+            self.pageController.animator().selectedIndex = newValue
+            self.pageControl?.selectedPage = UInt(newValue)
+        }
+    }
 
-    @objc var showPageControl = true {
+    @objc public var showPageControl = true {
         didSet {
             self.updatePageControl()
         }
     }
     
-    @objc var pageIndicatorStyle = PageControl.Style.dot {
+    @objc public var pageIndicatorStyle = PageControl.Style.dot {
         didSet {
             self.pageControl?.style = self.pageIndicatorStyle
         }
@@ -162,13 +190,14 @@ class PageViewController: NSViewController {
     }
     
     @objc
-    func pageControlDidChangeSelection(_ sender: PageControl) {
-        self.pageController.animator().selectedIndex = Int(sender.selectedPage)
+    public func pageControlDidChangeSelection(_ sender: PageControl) {
+        self.selectedPage = Int(sender.selectedPage)
+        self.notifyDelegate()
     }
     
 // MARK: - Arrow Controls
     
-    @objc var showArrowControls = false {
+    @objc public var showArrowControls = false {
         didSet {
             self.updateArrowControls()
         }
@@ -233,39 +262,40 @@ class PageViewController: NSViewController {
     }
     
     @objc
-    func didPressArrowControl(_ sender: ArrowControl) {
+    public func didPressArrowControl(_ sender: ArrowControl) {
         switch sender.direction {
         case .left:
             self.pageController.navigateBack(nil)
         case .right:
             self.pageController.navigateForward(nil)
         }
+        self.notifyDelegate()
     }
     
 // MARK: - Appearance + Behavior
     
-    @objc var pageControlRequiresMouseOver = false {
+    @objc public var pageControlRequiresMouseOver = false {
         didSet {
             self.updateMouseTracking()
             self.hidePageControl(self.pageControlRequiresMouseOver)
         }
     }
     
-    @objc var arrowControlsRequireMouseOver = false {
+    @objc public var arrowControlsRequireMouseOver = false {
         didSet {
             self.updateMouseTracking()
             self.hideArrowControls(self.arrowControlsRequireMouseOver)
         }
     }
     
-    @objc var overlayControls = true {
+    @objc public var overlayControls = true {
         didSet {
             self.updateBottomConstraint()
             self.updateSideConstraints()
         }
     }
     
-    @objc var tintColor = NSColor.black {
+    @objc public var tintColor = NSColor.black {
         didSet {
             self.pageControl?.color = self.tintColor
             self.leftArrow?.color = self.tintColor
@@ -273,7 +303,7 @@ class PageViewController: NSViewController {
         }
     }
     
-    @objc var backgroundColor: NSColor? {
+    @objc public var backgroundColor: NSColor? {
         didSet {
             self.updateBackgroundColor()
         }
@@ -281,7 +311,7 @@ class PageViewController: NSViewController {
     
 // MARK: - Mouse
     
-    override func mouseEntered(with theEvent: NSEvent) {
+    public override func mouseEntered(with theEvent: NSEvent) {
         super.mouseEntered(with: theEvent)
         guard theEvent.trackingNumber == self.trackingRectTag else { return }
         
@@ -294,7 +324,7 @@ class PageViewController: NSViewController {
         }
     }
     
-    override func mouseExited(with theEvent: NSEvent) {
+   public override func mouseExited(with theEvent: NSEvent) {
         super.mouseExited(with: theEvent)
         guard theEvent.trackingNumber == self.trackingRectTag else { return }
         
@@ -348,31 +378,79 @@ class PageViewController: NSViewController {
         self.pageControl?.selectedPage = UInt(self.pageController.selectedIndex)
     }
     
+    fileprivate func notifyDelegate() {
+        self.delegate?.pageViewController(self, didSelectPage: self.selectedPage)
+    }
+    
+// MARK: - Navigation
+    
+    private var needsLeftToRightNavigation: Bool {
+        return (NSApp.userInterfaceLayoutDirection == .leftToRight)
+    }
+    
+    @objc
+    public func navigateForward() {
+        if self.needsLeftToRightNavigation {
+            self.pageController.navigateForward(nil)
+        } else {
+            self.pageController.navigateBack(nil)
+        }
+        self.notifyDelegate()
+    }
+    
+    @objc
+    public func navigateBack() {
+        if self.needsLeftToRightNavigation {
+            self.pageController.navigateBack(nil)
+        } else {
+            self.pageController.navigateForward(nil)
+        }
+        self.notifyDelegate()
+    }
+    
+    @objc
+    public var isAtStart: Bool {
+        if self.needsLeftToRightNavigation {
+            return (self.selectedPage == 0)
+        } else {
+            return (self.selectedPage == self.viewControllers.count-1)
+        }
+    }
+    
+    @objc
+    public var isAtEnd: Bool {
+        if self.needsLeftToRightNavigation {
+            return (self.selectedPage == self.viewControllers.count-1)
+        } else {
+            return (self.selectedPage == 0)
+        }
+    }
+    
 }
 
 extension PageViewController: NSPageControllerDelegate {
     
-    func pageController(_ pageController: NSPageController, identifierFor object: Any) -> NSPageController.ObjectIdentifier {
+    public func pageController(_ pageController: NSPageController, identifierFor object: Any) -> NSPageController.ObjectIdentifier {
         guard let number = object as? NSNumber else { fatalError("The arrangedObjects array has been changed manually. This is not allowed! Please use the viewControllers array to manage the pages.") }
         return NSPageController.ObjectIdentifier(number.stringValue)
     }
     
-    func pageController(_ pageController: NSPageController, viewControllerForIdentifier identifier: NSPageController.ObjectIdentifier) -> NSViewController {
+    public func pageController(_ pageController: NSPageController, viewControllerForIdentifier identifier: NSPageController.ObjectIdentifier) -> NSViewController {
         let index = (identifier as NSString).integerValue
         return self.viewControllers[index]
     }
     
-    func pageController(_ pageController: NSPageController, didTransitionTo object: Any) {
+    public func pageController(_ pageController: NSPageController, didTransitionTo object: Any) {
         let identifier = self.pageController(pageController, identifierFor: object)
         let viewController = self.pageController(pageController, viewControllerForIdentifier: identifier)
         guard let index = self.viewControllers.index(of: viewController) else { return }
         
         self.pageControl?.selectedPage = UInt(index)
         self.hideArrowControls(false)
-        
+        self.notifyDelegate()
     }
     
-    func pageControllerDidEndLiveTransition(_ pageController: NSPageController) {
+    public func pageControllerDidEndLiveTransition(_ pageController: NSPageController) {
         self.pageController.completeTransition() // we need to do this, see docs
     }
     
@@ -403,5 +481,14 @@ extension PageViewController {
 extension Array {
     mutating func reverseInPlace() {
         self = self.reversed()
+    }
+}
+
+private class _FLOPageController: NSPageController {
+    var scrollingEnabled = true
+    
+    override func scrollWheel(with event: NSEvent) {
+        guard self.scrollingEnabled else { return }
+        super.scrollWheel(with: event)
     }
 }

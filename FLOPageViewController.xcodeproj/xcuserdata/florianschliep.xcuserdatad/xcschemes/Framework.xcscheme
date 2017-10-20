@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "13773EB71C4E936A003FF521"
-               BuildableName = "FLOPageViewController.app"
+               BlueprintIdentifier = "138929301F70075200DE6DFB"
+               BuildableName = "FLOPageViewController.framework"
                BlueprintName = "FLOPageViewController"
                ReferencedContainer = "container:FLOPageViewController.xcodeproj">
             </BuildableReference>
@@ -29,31 +29,12 @@
       language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "13773EC81C4E936A003FF521"
-               BuildableName = "FLOPageViewControllerUITests.xctest"
-               BlueprintName = "FLOPageViewControllerUITests"
-               ReferencedContainer = "container:FLOPageViewController.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13773EB71C4E936A003FF521"
-            BuildableName = "FLOPageViewController.app"
-            BlueprintName = "FLOPageViewController"
-            ReferencedContainer = "container:FLOPageViewController.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       language = ""
@@ -63,16 +44,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13773EB71C4E936A003FF521"
-            BuildableName = "FLOPageViewController.app"
+            BlueprintIdentifier = "138929301F70075200DE6DFB"
+            BuildableName = "FLOPageViewController.framework"
             BlueprintName = "FLOPageViewController"
             ReferencedContainer = "container:FLOPageViewController.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -82,16 +62,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13773EB71C4E936A003FF521"
-            BuildableName = "FLOPageViewController.app"
+            BlueprintIdentifier = "138929301F70075200DE6DFB"
+            BuildableName = "FLOPageViewController.framework"
             BlueprintName = "FLOPageViewController"
             ReferencedContainer = "container:FLOPageViewController.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

@@ -9,7 +9,7 @@
 import Cocoa
 
 @objc(FLOArrowControl)
-class ArrowControl: NSControl {
+public class ArrowControl: NSControl {
 
     private var mouseDown = false {
         didSet {
@@ -19,18 +19,18 @@ class ArrowControl: NSControl {
     
 // MARK: - Properties
     
-    enum Direction {
+    public enum Direction {
         case left
         case right
     }
     
-    var direction = Direction.left {
+    public var direction = Direction.left {
         didSet {
             self.needsDisplay = true
         }
     }
     
-    var color = NSColor.black {
+    public var color = NSColor.black {
         didSet {
             self.needsDisplay = true
         }
@@ -38,7 +38,7 @@ class ArrowControl: NSControl {
     
 // MARK: - Drawing
     
-    override func draw(_ dirtyRect: NSRect) {
+    public override func draw(_ dirtyRect: NSRect) {
         let drawRightArrow = self.direction == .right
         let lineWidth: CGFloat = 4
         
@@ -55,12 +55,12 @@ class ArrowControl: NSControl {
     
 // MARK: - Mouse
     
-    override func mouseDown(with theEvent: NSEvent) {
+    public override func mouseDown(with theEvent: NSEvent) {
         super.mouseDown(with: theEvent)
         self.mouseDown = true
     }
     
-    override func mouseUp(with theEvent: NSEvent) {
+    public override func mouseUp(with theEvent: NSEvent) {
         super.mouseUp(with: theEvent)
         self.mouseDown = false
         

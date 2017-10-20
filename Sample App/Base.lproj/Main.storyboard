@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -642,7 +643,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="FLOPageViewController" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="FLOPageViewControllerSample" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
@@ -656,6 +657,9 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <connections>
+                            <outlet property="delegate" destination="B8D-0N-5wS" id="RrH-C8-TPc"/>
+                        </connections>
                     </window>
                     <connections>
                         <segue destination="J7t-nv-2Ex" kind="relationship" relationship="window.shadowedContentViewController" id="Kxg-kq-Un4"/>
@@ -668,13 +672,14 @@
         <!--View Controller-->
         <scene sceneID="xJG-Sf-nv7">
             <objects>
-                <viewController id="J7t-nv-2Ex" customClass="ViewController" customModule="FLOPageViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="J7t-nv-2Ex" customClass="ViewController" customModule="FLOPageViewControllerSample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="3ia-jr-TXD">
                         <rect key="frame" x="0.0" y="0.0" width="505" height="413"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="biN-lt-PSO">
                                 <rect key="frame" x="18" y="377" width="101" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Page Control" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="cAA-1l-KeE">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -685,6 +690,7 @@
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zcU-NO-Qkc">
                                 <rect key="frame" x="18" y="357" width="113" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Arrow Controls" bezelStyle="regularSquare" imagePosition="left" inset="2" id="1JC-mX-DhS">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -695,6 +701,7 @@
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jm8-QM-IA3">
                                 <rect key="frame" x="342" y="377" width="145" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Require Mouse Over" bezelStyle="regularSquare" imagePosition="left" inset="2" id="0Hb-gm-bPJ">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -705,6 +712,7 @@
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yb3-Of-k66">
                                 <rect key="frame" x="342" y="357" width="145" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Require Mouse Over" bezelStyle="regularSquare" imagePosition="left" inset="2" id="YyM-Lf-DN6">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -715,6 +723,7 @@
                             </button>
                             <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KAo-Om-hXh">
                                 <rect key="frame" x="224" y="316" width="44" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="didSelectTintColor:" target="J7t-nv-2Ex" id="FOM-1D-8gd"/>
@@ -722,6 +731,7 @@
                             </colorWell>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XcP-T3-O0b">
                                 <rect key="frame" x="186" y="319" width="32" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Tint:" id="DuM-c3-SPo">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -730,6 +740,7 @@
                             </textField>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wf9-VK-NVM">
                                 <rect key="frame" x="168" y="377" width="121" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Circle Indicators" bezelStyle="regularSquare" imagePosition="left" inset="2" id="9Qj-de-m8T">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -740,12 +751,14 @@
                             </button>
                             <containerView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B74-jC-r21">
                                 <rect key="frame" x="0.0" y="0.0" width="505" height="296"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="KDc-7X-CoC" kind="embed" id="tvX-oA-uCu"/>
                                 </connections>
                             </containerView>
                             <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YHD-rO-s7Y">
                                 <rect key="frame" x="441" y="316" width="44" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="color" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="didSelectBackgroundColor:" target="J7t-nv-2Ex" id="g8t-Rw-KG7"/>
@@ -753,6 +766,7 @@
                             </colorWell>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="61T-Ro-kYG">
                                 <rect key="frame" x="354" y="319" width="81" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Background:" id="R5G-C8-cO3">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -761,6 +775,7 @@
                             </textField>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="etv-lh-kSk">
                                 <rect key="frame" x="18" y="318" width="123" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Overlay Controls" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Vff-OE-NXp">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -779,7 +794,7 @@
         <!--Page View Controller-->
         <scene sceneID="e2F-qg-8th">
             <objects>
-                <viewController id="KDc-7X-CoC" customClass="FLOPageViewController" customModule="FLOPageViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="KDc-7X-CoC" customClass="PageViewController" sceneMemberID="viewController">
                     <view key="view" id="vIN-ee-Evg">
                         <rect key="frame" x="0.0" y="0.0" width="505" height="296"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -793,7 +808,7 @@
         <scene sceneID="FlZ-4J-r7k">
             <objects>
                 <viewController storyboardIdentifier="1" id="97s-g8-24r" sceneMemberID="viewController">
-                    <view key="view" id="tAK-dp-pvz" customClass="ColoredView" customModule="FLOPageViewController" customModuleProvider="target">
+                    <view key="view" id="tAK-dp-pvz" customClass="ColoredView" customModule="FLOPageViewControllerSample" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="505" height="296"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -825,7 +840,7 @@
         <scene sceneID="Xl9-Th-CWh">
             <objects>
                 <viewController storyboardIdentifier="2" id="Mpe-ba-De7" sceneMemberID="viewController">
-                    <view key="view" id="GjO-qT-ziO" customClass="ColoredView" customModule="FLOPageViewController" customModuleProvider="target">
+                    <view key="view" id="GjO-qT-ziO" customClass="ColoredView" customModule="FLOPageViewControllerSample" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="505" height="296"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -857,7 +872,7 @@
         <scene sceneID="aTj-84-hc5">
             <objects>
                 <viewController storyboardIdentifier="3" id="mq8-gx-5c3" sceneMemberID="viewController">
-                    <view key="view" id="pmn-bm-Ksr" customClass="ColoredView" customModule="FLOPageViewController" customModuleProvider="target">
+                    <view key="view" id="pmn-bm-Ksr" customClass="ColoredView" customModule="FLOPageViewControllerSample" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="505" height="296"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>

@@ -9,31 +9,31 @@
 import Cocoa
 
 @objc(FLOPageControl)
-class PageControl: NSControl {
+public class PageControl: NSControl {
     
     private var needsToRedrawIndicators = false
     
 // MARK: - Appearance
     
-    var color = NSColor.black {
+    public var color = NSColor.black {
         didSet {
             self.redrawIndicators()
         }
     }
     
-    var indicatorSize: CGFloat = 7 {
+    public var indicatorSize: CGFloat = 7 {
         didSet {
             self.redrawIndicators()
         }
     }
     
-    @objc
-    enum Style: Int {
+    @objc(FLOPageControlStyle)
+    public enum Style: Int {
         case dot
         case circle
     }
     
-    var style = Style.dot {
+    public var style = Style.dot {
         didSet {
             self.redrawIndicators()
         }
@@ -41,13 +41,13 @@ class PageControl: NSControl {
     
 // MARK: - Pages
     
-    var numberOfPages: UInt = 0 {
+    public var numberOfPages: UInt = 0 {
         didSet {
             self.redrawIndicators()
         }
     }
     
-    var selectedPage: UInt = 0 {
+    public var selectedPage: UInt = 0 {
         didSet {
             self.redrawIndicators()
         }
@@ -55,7 +55,7 @@ class PageControl: NSControl {
     
 // MARK: - NSControl
     
-    override var frame: NSRect {
+    public override var frame: NSRect {
         willSet {
             self.needsToRedrawIndicators = true
         }
@@ -63,7 +63,7 @@ class PageControl: NSControl {
 
 // MARK: - Drawing
     
-    override func draw(_ dirtyRect: NSRect) {
+    public override func draw(_ dirtyRect: NSRect) {
         guard self.needsToRedrawIndicators else { return }
         
         if self.numberOfPages > 1 {
@@ -98,17 +98,17 @@ class PageControl: NSControl {
     
 // MARK: - Mouse
     
-    override func mouseDown(with theEvent: NSEvent) {
+    public override func mouseDown(with theEvent: NSEvent) {
         let location = self.convert(theEvent.locationInWindow, from: nil)
         self.highlightIndicator(at: location)
     }
     
-    override func mouseDragged(with theEvent: NSEvent) {
+    public override func mouseDragged(with theEvent: NSEvent) {
         let location = self.convert(theEvent.locationInWindow, from: nil)
         self.highlightIndicator(at: location)
     }
     
-    override func mouseUp(with theEvent: NSEvent) {
+    public override func mouseUp(with theEvent: NSEvent) {
         let location = self.convert(theEvent.locationInWindow, from: nil)
         self.highlightIndicator(at: location, sendAction: true)
     }

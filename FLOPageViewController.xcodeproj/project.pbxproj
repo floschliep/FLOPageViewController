@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		131BADC61F9A0E7000A3EF87 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 131BADC41F9A0E7000A3EF87 /* Main.storyboard */; };
 		13773EBC1C4E936A003FF521 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13773EBB1C4E936A003FF521 /* AppDelegate.swift */; };
 		13773EC01C4E936A003FF521 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13773EBF1C4E936A003FF521 /* Assets.xcassets */; };
 		13773ECE1C4E936A003FF521 /* FLOPageViewControllerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13773ECD1C4E936A003FF521 /* FLOPageViewControllerUITests.swift */; };
@@ -18,7 +19,6 @@
 		1389293F1F70078000DE6DFB /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D69B101C50F8FD00CE3E6E /* PageControl.swift */; };
 		138929401F70078000DE6DFB /* ArrowControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D69B121C51100A00CE3E6E /* ArrowControl.swift */; };
 		1396A9F61C4FD1E200D89DF1 /* ColoredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396A9F51C4FD1E200D89DF1 /* ColoredView.swift */; };
-		13FB49751F9A092B00C1AAFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13773EC11C4E936A003FF521 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,10 +53,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		131BADC51F9A0E7000A3EF87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		13773EB81C4E936A003FF521 /* FLOPageViewControllerSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FLOPageViewControllerSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13773EBB1C4E936A003FF521 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "../Sample App/AppDelegate.swift"; sourceTree = "<group>"; };
 		13773EBF1C4E936A003FF521 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../Sample App/Assets.xcassets"; sourceTree = "<group>"; };
-		13773EC21C4E936A003FF521 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		13773EC91C4E936A003FF521 /* FLOPageViewControllerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FLOPageViewControllerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		13773ECD1C4E936A003FF521 /* FLOPageViewControllerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FLOPageViewControllerUITests.swift; sourceTree = "<group>"; };
 		13773ECF1C4E936A003FF521 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -124,11 +124,10 @@
 				13773EDD1C4E9E59003FF521 /* ViewController.swift */,
 				1396A9F51C4FD1E200D89DF1 /* ColoredView.swift */,
 				13773EBF1C4E936A003FF521 /* Assets.xcassets */,
-				13773EC11C4E936A003FF521 /* Main.storyboard */,
+				131BADC41F9A0E7000A3EF87 /* Main.storyboard */,
 				13FB49731F9A086400C1AAFD /* Info.plist */,
 			);
-			name = "Sample App";
-			path = FLOPageViewController;
+			path = "Sample App";
 			sourceTree = "<group>";
 		};
 		13773ECC1C4E936A003FF521 /* UI Tests */ = {
@@ -272,7 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13773EC01C4E936A003FF521 /* Assets.xcassets in Resources */,
-				13FB49751F9A092B00C1AAFD /* Main.storyboard in Resources */,
+				131BADC61F9A0E7000A3EF87 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,13 +336,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		13773EC11C4E936A003FF521 /* Main.storyboard */ = {
+		131BADC41F9A0E7000A3EF87 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				13773EC21C4E936A003FF521 /* Base */,
+				131BADC51F9A0E7000A3EF87 /* Base */,
 			);
 			name = Main.storyboard;
-			path = "../Sample App";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -453,8 +451,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_STRICT_PROTOTYPES = NO;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Sample App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.floschliep.FLOPageViewController;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -469,8 +469,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_STRICT_PROTOTYPES = NO;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Sample App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.floschliep.FLOPageViewController;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;

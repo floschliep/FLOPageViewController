@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -643,7 +642,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="FLOPageViewControllerSample" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="FLOPageViewController" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
@@ -672,7 +671,7 @@
         <!--View Controller-->
         <scene sceneID="xJG-Sf-nv7">
             <objects>
-                <viewController id="J7t-nv-2Ex" customClass="ViewController" customModule="FLOPageViewControllerSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="J7t-nv-2Ex" customClass="ViewController" customModule="FLOPageViewController" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="3ia-jr-TXD">
                         <rect key="frame" x="0.0" y="0.0" width="505" height="413"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -794,7 +793,7 @@
         <!--Page View Controller-->
         <scene sceneID="e2F-qg-8th">
             <objects>
-                <viewController id="KDc-7X-CoC" customClass="PageViewController" sceneMemberID="viewController">
+                <viewController id="KDc-7X-CoC" customClass="FLOPageViewController" sceneMemberID="viewController">
                     <view key="view" id="vIN-ee-Evg">
                         <rect key="frame" x="0.0" y="0.0" width="505" height="296"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -808,7 +807,7 @@
         <scene sceneID="FlZ-4J-r7k">
             <objects>
                 <viewController storyboardIdentifier="1" id="97s-g8-24r" sceneMemberID="viewController">
-                    <view key="view" id="tAK-dp-pvz" customClass="ColoredView" customModule="FLOPageViewControllerSample" customModuleProvider="target">
+                    <view key="view" id="tAK-dp-pvz" customClass="ColoredView" customModule="FLOPageViewController" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="505" height="296"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -840,7 +839,7 @@
         <scene sceneID="Xl9-Th-CWh">
             <objects>
                 <viewController storyboardIdentifier="2" id="Mpe-ba-De7" sceneMemberID="viewController">
-                    <view key="view" id="GjO-qT-ziO" customClass="ColoredView" customModule="FLOPageViewControllerSample" customModuleProvider="target">
+                    <view key="view" id="GjO-qT-ziO" customClass="ColoredView" customModule="FLOPageViewController" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="505" height="296"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -872,7 +871,7 @@
         <scene sceneID="aTj-84-hc5">
             <objects>
                 <viewController storyboardIdentifier="3" id="mq8-gx-5c3" sceneMemberID="viewController">
-                    <view key="view" id="pmn-bm-Ksr" customClass="ColoredView" customModule="FLOPageViewControllerSample" customModuleProvider="target">
+                    <view key="view" id="pmn-bm-Ksr" customClass="ColoredView" customModule="FLOPageViewController" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="505" height="296"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>

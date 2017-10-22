@@ -33,18 +33,15 @@ The (optional) `backgroundColor` property is the color displayed behind the page
 As `FLOPageViewController` uses `NSPageController` under the hood, swipe gestures are supported by default.
 
 ## Requirements + Compatibility
-`FLOPageViewController` requires Swift 3.0. It is compatible with macOS 10.10 and later. I've tested it on 10.10, 10.11 and 10.12.
+`FLOPageViewController` requires Swift 4.0. It is compatible with macOS 10.10 and later. I've tested it on 10.10, 10.11, 10.12 and 10.13.
 
 ## Installation
-Just add all files from the [`Source`](Source/) folder to your project and you're good to go.
+Download the repository, build the Xcode project and add the `FLOPageViewController.framework` build product to your project.
 
 ## Localization
 `FLOPageViewController` supports R-L languages out of the box. In case of an R-L language, the `viewControllers` array will be reversed and the `pageControl`'s `selectedPage`will be set to the last index.
 
 ## To Do
-- [ ] Delegate callbacks
-- [ ] Methods for navigation (with support for R-L languages)
-- [ ] Property to set the initial selected page
 - [ ] Support for varying page sizes
 - [ ] Accessibility support
 - [ ] UI tests

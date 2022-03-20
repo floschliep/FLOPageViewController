@@ -11,7 +11,7 @@ import Cocoa
 private let ArrowSize = NSSize(width: 20, height: 40)
 
 @objc(FLOPageViewControllerDelegate)
-public protocol PageViewControllerDelegate: class {
+public protocol PageViewControllerDelegate: AnyObject {
     func pageViewController(_ pageViewController: PageViewController, didSelectPage pageIndex: Int)
 }
 

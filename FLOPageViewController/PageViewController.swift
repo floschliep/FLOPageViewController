@@ -60,7 +60,7 @@ public class PageViewController: NSViewController {
         pageController.delegate = self
         pageController.transitionStyle = .horizontalStrip
 
-        self.addChildViewController(pageController)
+        self.addChild(pageController)
         self.pageController = pageController
     }
     
@@ -106,7 +106,7 @@ public class PageViewController: NSViewController {
             if reverse {
                 self.viewControllers.reverseInPlace()
             }
-            self.pageController.arrangedObjects = self.viewControllers.map({ NSNumber(value: self.viewControllers.index(of: $0)!) })
+            self.pageController.arrangedObjects = self.viewControllers.map({ NSNumber(value: self.viewControllers.firstIndex(of: $0)!) })
             self.pageController.scrollingEnabled = (self.viewControllers.count > 1)
             
             if reverse {
@@ -120,7 +120,7 @@ public class PageViewController: NSViewController {
     @objc
     public func loadViewControllers(_ viewControllerIdentifiers: [String], from storyboard: NSStoryboard) {
         self.viewControllers = viewControllerIdentifiers.map({
-            storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier($0)) as! NSViewController
+            storyboard.instantiateController(withIdentifier: $0) as! NSViewController
         })
     }
     
@@ -432,7 +432,7 @@ extension PageViewController: NSPageControllerDelegate {
     
     public func pageController(_ pageController: NSPageController, identifierFor object: Any) -> NSPageController.ObjectIdentifier {
         guard let number = object as? NSNumber else { fatalError("The arrangedObjects array has been changed manually. This is not allowed! Please use the viewControllers array to manage the pages.") }
-        return NSPageController.ObjectIdentifier(number.stringValue)
+        return number.stringValue
     }
     
     public func pageController(_ pageController: NSPageController, viewControllerForIdentifier identifier: NSPageController.ObjectIdentifier) -> NSViewController {
@@ -443,7 +443,7 @@ extension PageViewController: NSPageControllerDelegate {
     public func pageController(_ pageController: NSPageController, didTransitionTo object: Any) {
         let identifier = self.pageController(pageController, identifierFor: object)
         let viewController = self.pageController(pageController, viewControllerForIdentifier: identifier)
-        guard let index = self.viewControllers.index(of: viewController) else { return }
+        guard let index = self.viewControllers.firstIndex(of: viewController) else { return }
         
         self.pageControl?.selectedPage = UInt(index)
         self.hideArrowControls(false)

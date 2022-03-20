@@ -19,7 +19,7 @@ class ViewController: NSViewController {
         super.prepare(for: segue, sender: sender)
         
         guard let pageViewController = segue.destinationController as? PageViewController else { return }
-        let storyboard = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil)
+        let storyboard = NSStoryboard(name: "Main", bundle: nil)
         pageViewController.loadViewControllers(["1", "2", "3"], from: storyboard)
         self.pageViewController = pageViewController
     }

@@ -69,7 +69,7 @@ public class PageControl: NSControl {
         if self.numberOfPages > 1 {
             for index in 0...self.numberOfPages-1 {
                 var fill = true
-                let frame = self.frameOfIndicator(at: index)
+                var frame = self.frameOfIndicator(at: index)
                 let lineWidth: CGFloat = 1
                 
                 switch (self.style, index == self.selectedPage) {
@@ -80,7 +80,7 @@ public class PageControl: NSControl {
                 case (.circle, false):
                     self.color.setStroke()
                     fill = false
-                    frame.insetBy(dx: lineWidth*0.5, dy: lineWidth*0.5)
+                    frame = frame.insetBy(dx: lineWidth*0.5, dy: lineWidth*0.5)
                 }
                 
                 let path = NSBezierPath(ovalIn: frame)
